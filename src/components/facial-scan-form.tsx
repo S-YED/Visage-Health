@@ -69,7 +69,8 @@ export function FacialScanForm({ onAnalysis }) {
   };
 
   return (
-    <div className="flex flex-col items-center space-y-4 w-full max-w-md">
+    <div className="flex flex-col items-center space-y-4 w-full max-w-md mt-8">
+      {/* Image Upload */}
       <input
         type="file"
         accept="image/*"
@@ -82,6 +83,8 @@ export function FacialScanForm({ onAnalysis }) {
           <span className="mr-2">Upload Facial Photo</span>
         </Button>
       </label>
+
+      {/* Image Preview and Analyze Button */}
       {image && !scanStatus && (
         <div className="relative">
           <img
@@ -95,6 +98,7 @@ export function FacialScanForm({ onAnalysis }) {
         </div>
       )}
 
+      {/* Scan Status and Progress Bar */}
       {scanStatus && (
         <div className="w-full flex flex-col items-center">
           <Progress value={scanProgress} className="w-full mb-2" />

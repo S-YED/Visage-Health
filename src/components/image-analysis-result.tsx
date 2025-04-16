@@ -3,7 +3,9 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Circle, Smile, Sun, User } from "lucide-react"; // Example icons
+import { Smile, Sun, User } from "lucide-react"; // Example icons
+import { Button } from "@/components/ui/button";
+import { Circle } from "lucide-react";
 
 export function ImageAnalysisResult({ indicators, pimples, overallHealth, disclaimer }) {
   const hasIndicators = indicators && indicators.length > 0;
@@ -38,6 +40,7 @@ export function ImageAnalysisResult({ indicators, pimples, overallHealth, discla
                   Tip: {indicator.nextAction}
                 </p>
               )}
+              <Button variant="link">Learn More</Button>
             </CardContent>
           </Card>
         ))}
@@ -65,6 +68,7 @@ export function ImageAnalysisResult({ indicators, pimples, overallHealth, discla
                   </ul>
                 </>
               )}
+              <Button variant="link">Learn More</Button>
             </CardContent>
           </Card>
         ))}
