@@ -47,6 +47,7 @@ npm install
 # 4. Launch it
 npm run dev
 
+```
 ## 🌍 Tech Stack
 
 - ⚛️ **React.js**  
@@ -67,12 +68,16 @@ We love contributions! Here’s how you can jump in:
    ```bash
    git checkout -b feature/your-feature-name
 
+   ```
+
 3. **Make your changes and commit them**
 
 4.**Push to your fork:**
 
 ```bash
 git push origin feature/your-feature-name
+
+```
 
 5.**Create a pull request 💌**
 
