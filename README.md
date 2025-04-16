@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Visage-Health
 
 ## Project Description
@@ -9,14 +8,15 @@ Visage-Health is a web application designed to analyze facial health indicators.
 
 *   **Facial Scanning:** Capture a user's facial image using the device's camera.
 *   **Health Analysis:** Analyze facial features to identify potential health indicators.
-* **User-Friendly Interface:** Intuitive and easy-to-use design for seamless navigation.
-* **Detailed Report:** After the analysis, the user receives a detailed report.
+*   **User-Friendly Interface:** Intuitive and easy-to-use design for seamless navigation.
+*   **Detailed Report:** After the analysis, the user receives a detailed report.
 
 ## Getting Started
 
 To get started with the Visage-Health project locally, follow these steps:
 
 1.  **Clone the repository:**
+    
 
 ## Next steps
 
