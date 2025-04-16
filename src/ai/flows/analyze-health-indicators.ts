@@ -1,6 +1,6 @@
 'use server';
 /**
- * @fileOverview Analyzes a facial image for potential health indicators.
+ * @fileOverview Analyzes a facial image for potential health indicators, including pimples and their location.
  *
  * - analyzeHealthIndicators - A function that analyzes the facial image for potential health indicators.
  * - AnalyzeHealthIndicatorsInput - The input type for the analyzeHealthIndicators function.
@@ -21,8 +21,15 @@ const HealthIndicatorSchema = z.object({
   confidence: z.number().min(0).max(1).describe('A confidence score between 0 and 1.'),
 });
 
+const PimpleSchema = z.object({
+  location: z.string().describe('The location of the pimple on the face (e.g., forehead, chin, cheeks).'),
+  severity: z.string().describe('The severity of the pimple (e.g., mild, moderate, severe).'),
+  count: z.number().describe('The number of pimples in that location.'),
+});
+
 const AnalyzeHealthIndicatorsOutputSchema = z.object({
   indicators: z.array(HealthIndicatorSchema).describe('An array of potential health indicators.'),
+  pimples: z.array(PimpleSchema).describe('An array of pimples detected on the face.'),
   disclaimer: z.string().describe('A disclaimer stating that the app\'s analysis is not a substitute for professional medical advice.'),
 });
 
@@ -42,9 +49,10 @@ const analyzeHealthIndicatorsPrompt = ai.definePrompt({
   output: {
     schema: z.object({
       indicators: z.array(HealthIndicatorSchema).describe('An array of potential health indicators.'),
+      pimples: z.array(PimpleSchema).describe('An array of pimples detected on the face, including their location and severity.'),
     }),
   },
-  prompt: `You are an AI health assistant that analyzes facial images for potential health indicators.\n\nAnalyze the following facial image and identify any potential health indicators, such as skin discoloration or eye puffiness. Provide a confidence score for each indicator.\n\nPhoto: {{media url=photoUrl}}\n\nRespond with only the JSON. Do not provide any extra explanation.`, // Ensure only JSON is returned
+  prompt: `You are an AI health assistant that analyzes facial images for potential health indicators, including pimples.\n\nAnalyze the following facial image and identify any potential health indicators, such as skin discoloration or eye puffiness. Provide a confidence score for each indicator.\n\nAlso, check for pimples on the face. For each pimple, identify its location (e.g., forehead, chin, cheeks) and severity (e.g., mild, moderate, severe). Count the number of pimples in each location.\n\nPhoto: {{media url=photoUrl}}\n\nRespond with only the JSON. Do not provide any extra explanation.`, // Ensure only JSON is returned
 });
 
 const analyzeHealthIndicatorsFlow = ai.defineFlow<
@@ -62,6 +70,7 @@ async input => {
 
   return {
     indicators: output!.indicators,
+    pimples: output!.pimples,
     disclaimer: disclaimer,
   };
 });
