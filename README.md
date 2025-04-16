@@ -1,6 +1,6 @@
 # 💆‍♂️ Visage Health · *See Your Face, Know Your Health*
 
-![Visage Health Banner](./A_digital_graphic_design_banner_for_"Visage_Health.png) <!-- Update the path if needed -->
+![Visage Health Banner](Visage_Health_App.jpg) <!-- Update the path if needed -->
 
 **Live Preview:**  
 👉 [Try Visage Health Live](https://9000-idx-studio-1744818916065.cluster-73qgvk7hjjadkrjeyexca5ivva.cloudworkstations.dev/) <!-- Replace with your actual link -->
