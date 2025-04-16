@@ -4,10 +4,13 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { analyzeHealthIndicators } from "@/ai/flows/analyze-health-indicators";
 import { useToast } from "@/hooks/use-toast";
+import { Progress } from "@/components/ui/progress";
 
 export function FacialScanForm({ onAnalysis }) {
   const [image, setImage] = useState(null);
-    const { toast } = useToast()
+  const [scanStatus, setScanStatus] = useState("");
+  const [scanProgress, setScanProgress] = useState(0);
+  const { toast } = useToast()
 
   const handleImageUpload = async (event) => {
     const file = event.target.files?.[0];
@@ -35,20 +38,38 @@ export function FacialScanForm({ onAnalysis }) {
       return;
     }
 
+    // Simulate AI analysis with progress updates
+    const analysisSteps = [
+      { status: "Scanning facial regions…", progress: 25 },
+      { status: "Analyzing skin texture…", progress: 50 },
+      { status: "Identifying problem areas…", progress: 75 },
+      { status: "Preparing remedies…", progress: 90 },
+      { status: "Finalizing analysis…", progress: 100 },
+    ];
+
+    for (const step of analysisSteps) {
+      await new Promise((resolve) => setTimeout(resolve, 500)); // Simulate processing time
+      setScanStatus(step.status);
+      setScanProgress(step.progress);
+    }
+
     try {
       const result = await analyzeHealthIndicators({ photoUrl: image });
       onAnalysis(result);
+      setScanStatus("Analysis complete!");
     } catch (error) {
         toast({
             title: "Scan failed",
             description: error.message,
         })
       console.error("Error analyzing image:", error);
+      setScanStatus("Analysis failed.");
+      setScanProgress(0);
     }
   };
 
   return (
-    <div className="flex flex-col items-center space-y-4">
+    <div className="flex flex-col items-center space-y-4 w-full max-w-md">
       <input
         type="file"
         accept="image/*"
@@ -61,7 +82,7 @@ export function FacialScanForm({ onAnalysis }) {
           <span className="mr-2">Upload Facial Photo</span>
         </Button>
       </label>
-      {image && (
+      {image && !scanStatus && (
         <div className="relative">
           <img
             src={image}
@@ -73,7 +94,13 @@ export function FacialScanForm({ onAnalysis }) {
           </Button>
         </div>
       )}
+
+      {scanStatus && (
+        <div className="w-full flex flex-col items-center">
+          <Progress value={scanProgress} className="w-full mb-2" />
+          <p className="text-sm text-gray-600">{scanStatus}</p>
+        </div>
+      )}
     </div>
   );
 }
-

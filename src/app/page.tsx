@@ -21,6 +21,16 @@ export default function Home() {
         />
       )}
       <Toaster />
+      {/* Bottom navigation bar placeholder */}
+      <div className="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 py-2">
+        <div className="flex justify-around">
+          {/* Add navigation links here: Home, History, Tips, Profile */}
+          <div>Home</div>
+          <div>History</div>
+          <div>Tips</div>
+          <div>Profile</div>
+        </div>
+      </div>
     </div>
   );
 }
