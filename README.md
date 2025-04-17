@@ -5,6 +5,8 @@
 **Live Preview:**  
 👉 [Try Visage Health Live](https://9000-idx-studio-1744818916065.cluster-73qgvk7hjjadkrjeyexca5ivva.cloudworkstations.dev/) <!-- Replace with your actual link -->
 
+
+> ⚠️ **Note:** To run this project, you must use your own **Gemini API Key** from [Google AI Studio](https://aistudio.google.com/app/apikey).
 ---
 
 ## 🧠 What’s This?
