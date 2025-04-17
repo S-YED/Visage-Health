@@ -1,43 +1,29 @@
-import {genkit} from 'genkit';
-import {googleAI} from '@genkit-ai/googleai';
+import { genkit } from 'genkit';
 
-let aiInstance: ReturnType<typeof genkit> | null = null;
+import { googleAI } from '@genkit-ai/googleai';
 
 // Directly specify the API key here.  This is ONLY for temporary workaround
 // and should never be checked into source control.
-const apiKey = 'YOUR_API_KEY'; // Replace with your actual API key
-
-function getAiInstance() {
-  if (!aiInstance) {
-    if (!apiKey) {
-      console.error(
-        'GOOGLE_GENAI_API_KEY is not defined. Please configure it in your .env file.'
-      );
-      throw new Error(
-        'GOOGLE_GENAI_API_KEY is not defined. Please configure it in your .env file.'
-      );
-    }
-
-    aiInstance = genkit({
-      promptDir: './prompts',
-      plugins: [
-        googleAI({
-          // Gemini API key
-          apiKey: apiKey,
-        }),
-      ],
-      model: 'googleai/gemini-2.0-flash',
-    });
-  }
-  return aiInstance;
+const apiKey = 'AIzaSyBwA0UZdN4ot-7ekXt_Jt7coiz2s7ZxoBw';
+// Replace with your actual API key
+if (!apiKey) {
+  console.error(
+    'GOOGLE_GENAI_API_KEY is not defined. Please configure it in your .env file.'
+  );
+  throw new Error(
+    'GOOGLE_GENAI_API_KEY is not defined. Please configure it in your .env file.'
+  );
 }
 
-export const ai = {
-  ...{
-    definePrompt: (...args: Parameters<typeof genkit>) => getAiInstance().definePrompt(...args),
-    defineFlow: (...args: Parameters<typeof genkit>) => getAiInstance().defineFlow(...args),
-    defineTool: (...args: Parameters<typeof genkit>) => getAiInstance().defineTool(...args),
-    defineSchema: (...args: Parameters<typeof genkit>) => getAiInstance().defineSchema(...args),
-    registerModel: (...args: Parameters<typeof genkit>) => getAiInstance().registerModel(...args),
-  }
-};
+const ai = genkit({
+  promptDir: './prompts',
+  plugins: [
+    googleAI({
+      // Gemini API key
+      apiKey: apiKey,
+    }),
+  ],
+  model: 'googleai/gemini-2.0-flash',
+});
+
+export { ai };
