@@ -2,8 +2,8 @@
 
 ![Visage Health Banner](https://github.com/S-YED/Visage-Health/blob/main/Visage%20Health%20App.jpg) <!-- Update the path if needed -->
 
-**Live Preview:**  
-👉 [Try Visage Health Live](https://9000-idx-studio-1744818916065.cluster-73qgvk7hjjadkrjeyexca5ivva.cloudworkstations.dev/) <!-- Replace with your actual link -->
+**Demo Preview:**  
+👉 [Visage Health Preview](https://9000-idx-studio-1744818916065.cluster-73qgvk7hjjadkrjeyexca5ivva.cloudworkstations.dev/) <!-- Replace with your actual link -->(It Wont )
 
 
 > ⚠️ **Note:** To run this project, you must use your own **Gemini API Key** from [Google AI Studio](https://aistudio.google.com/app/apikey).
