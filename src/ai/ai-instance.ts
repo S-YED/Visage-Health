@@ -4,7 +4,7 @@ import { googleAI } from '@genkit-ai/googleai';
 
 // Directly specify the API key here.  This is ONLY for temporary workaround
 // and should never be checked into source control.
-const apiKey = 'REPLACE_WITH_YOUR_API_KEY';
+const apiKey = "";
 // Replace with your actual API key
 if (!apiKey) {
   console.error(
