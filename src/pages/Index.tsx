@@ -90,12 +90,33 @@ const Index = () => {
       <section className="px-4 pb-20">
         <div className="max-w-7xl mx-auto">
           {analyzing && (
-            <div className="text-center space-y-4 py-20">
-              <div className="inline-flex p-6 rounded-full bg-primary/10 glow-effect animate-pulse">
-                <Brain className="w-12 h-12 text-primary" />
+            <div className="text-center space-y-8 py-20">
+              <div className="relative">
+                <div className="absolute inset-0 bg-primary/20 blur-3xl rounded-full animate-pulse" />
+                <div className="relative inline-flex p-8 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20">
+                  <Brain className="w-16 h-16 text-primary animate-pulse" />
+                </div>
               </div>
-              <h3 className="text-2xl font-semibold">Analyzing Your Health...</h3>
-              <p className="text-muted-foreground">Our AI is processing your image with advanced algorithms</p>
+              
+              <div className="space-y-3">
+                <h3 className="text-3xl font-bold text-gradient">Analyzing Your Health...</h3>
+                <p className="text-muted-foreground text-lg">Our advanced AI is processing your image</p>
+              </div>
+
+              <div className="max-w-md mx-auto space-y-3">
+                <div className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border animate-fade-in">
+                  <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                  <span className="text-sm">Detecting facial features...</span>
+                </div>
+                <div className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                  <div className="w-2 h-2 rounded-full bg-primary animate-pulse" style={{ animationDelay: '0.2s' }} />
+                  <span className="text-sm">Analyzing skin health indicators...</span>
+                </div>
+                <div className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border animate-fade-in" style={{ animationDelay: '0.4s' }}>
+                  <div className="w-2 h-2 rounded-full bg-primary animate-pulse" style={{ animationDelay: '0.4s' }} />
+                  <span className="text-sm">Generating personalized insights...</span>
+                </div>
+              </div>
             </div>
           )}
 
