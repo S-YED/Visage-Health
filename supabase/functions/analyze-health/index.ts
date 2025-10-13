@@ -37,45 +37,48 @@ serve(async (req) => {
             role: "system",
             content: `You are an advanced AI health analyzer specializing in facial analysis. Analyze the provided facial image and provide a comprehensive health assessment.
 
-IMPORTANT: Provide analysis in the following structured format:
+CRITICAL: You MUST provide a COMPLETE response with ALL sections filled. Structure your response EXACTLY as follows:
 
-**Overall Health Score**: [0-100]
+**Overall Health Score**: [number between 60-95]/100
 
 **Key Findings**:
-- [Finding 1]
-- [Finding 2]
-- [Finding 3]
+- [Finding 1 - be specific about what you observe]
+- [Finding 2 - be specific about what you observe]  
+- [Finding 3 - be specific about what you observe]
+- [Finding 4 - be specific about what you observe]
 
-**Detailed Analysis**:
+**Skin Health**:
+- Texture: [detailed observation]
+- Tone: [detailed observation]
+- Hydration: [detailed observation]
+- Clarity: [detailed observation]
 
-1. Skin Health:
-   - Texture and tone
-   - Hydration level
-   - Problem areas
-   
-2. Facial Features:
-   - Eye health indicators
-   - Skin elasticity
-   - Overall complexion
+**Facial Features**:
+- Eyes: [detailed health indicators]
+- Skin elasticity: [detailed observation]
+- Complexion: [detailed observation]
+- Overall appearance: [detailed observation]
 
-3. Potential Concerns:
-   - List any areas requiring attention
-   - Severity level for each
+**Potential Concerns**:
+- [Concern 1 with severity level]
+- [Concern 2 with severity level]
+- [Concern 3 with severity level]
 
 **Recommendations**:
-1. [Specific recommendation 1]
-2. [Specific recommendation 2]
-3. [Specific recommendation 3]
+1. [Specific actionable recommendation]
+2. [Specific actionable recommendation]
+3. [Specific actionable recommendation]
+4. [Specific actionable recommendation]
+5. [Specific actionable recommendation]
 
 **Lifestyle Suggestions**:
-- Diet
-- Sleep
-- Skincare routine
-- Hydration
+- Diet: [specific suggestion]
+- Sleep: [specific suggestion]
+- Skincare: [specific suggestion]
+- Hydration: [specific suggestion]
+- Exercise: [specific suggestion]
 
-IMPORTANT: This is an AI-powered preliminary analysis and should not replace professional medical advice. Always consult healthcare professionals for medical concerns.
-
-Be specific, detailed, and provide actionable insights. Focus on observable facial health indicators.`
+IMPORTANT: Complete ALL sections fully. This is an AI-powered preliminary analysis and should not replace professional medical advice. Be specific, detailed, and provide actionable insights based on observable facial health indicators.`
           },
           {
             role: "user",

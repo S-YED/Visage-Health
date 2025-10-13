@@ -21,10 +21,17 @@ interface ParsedAnalysis {
 const AnalysisResult = ({ analysis, image }: AnalysisResultProps) => {
   const [parsedData, setParsedData] = useState<ParsedAnalysis | null>(null);
   const [isAnimating, setIsAnimating] = useState(true);
+  const [showRawAnalysis, setShowRawAnalysis] = useState(false);
 
   useEffect(() => {
     const parsed = parseAnalysis(analysis);
     setParsedData(parsed);
+    
+    // Show raw analysis if parsing failed to extract enough data
+    const totalItems = parsed.keyFindings.length + parsed.skinHealth.length + 
+                       parsed.facialFeatures.length + parsed.recommendations.length;
+    setShowRawAnalysis(totalItems < 5);
+    
     setTimeout(() => setIsAnimating(false), 500);
   }, [analysis]);
 
@@ -238,6 +245,23 @@ const AnalysisResult = ({ analysis, image }: AnalysisResultProps) => {
                 <p className="text-sm font-medium">{item}</p>
               </div>
             ))}
+          </div>
+        </Card>
+      )}
+
+      {/* Raw Analysis Fallback */}
+      {showRawAnalysis && (
+        <Card className="p-8 card-premium">
+          <div className="flex items-center gap-3 mb-6">
+            <div className="p-3 rounded-xl bg-primary/10">
+              <Brain className="w-6 h-6 text-primary" />
+            </div>
+            <h3 className="text-2xl font-bold">Complete Analysis</h3>
+          </div>
+          <div className="prose prose-sm max-w-none dark:prose-invert">
+            <div className="whitespace-pre-wrap leading-relaxed text-sm">
+              {analysis}
+            </div>
           </div>
         </Card>
       )}
