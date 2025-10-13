@@ -94,7 +94,7 @@ Be specific, detailed, and provide actionable insights. Focus on observable faci
           }
         ],
         temperature: 0.7,
-        max_tokens: 2000
+        max_tokens: 4000
       }),
     });
 
