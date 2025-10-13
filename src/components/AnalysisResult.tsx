@@ -258,10 +258,42 @@ const AnalysisResult = ({ analysis, image }: AnalysisResultProps) => {
             </div>
             <h3 className="text-2xl font-bold">Complete Analysis</h3>
           </div>
-          <div className="prose prose-sm max-w-none dark:prose-invert">
-            <div className="whitespace-pre-wrap leading-relaxed text-sm">
-              {analysis}
-            </div>
+          <div className="space-y-4">
+            {analysis.split('\n\n').map((section, idx) => {
+              const lines = section.split('\n');
+              const heading = lines[0];
+              const content = lines.slice(1);
+              
+              // Check if it's a heading with **
+              if (heading.startsWith('**') && heading.endsWith('**')) {
+                const headingText = heading.replace(/\*\*/g, '');
+                return (
+                  <div key={idx} className="space-y-2">
+                    <h4 className="text-lg font-semibold text-primary">{headingText}</h4>
+                    <div className="space-y-1 pl-4">
+                      {content.map((line, lineIdx) => {
+                        if (!line.trim()) return null;
+                        // Remove markdown list markers
+                        const cleanLine = line.replace(/^[-•]\s*/, '').replace(/^\d+\.\s*/, '');
+                        return (
+                          <p key={lineIdx} className="text-sm flex items-start gap-2">
+                            {line.match(/^[-•]/) && <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />}
+                            {line.match(/^\d+\./) && <span className="text-primary font-medium">{line.match(/^\d+/)?.[0]}.</span>}
+                            <span>{cleanLine}</span>
+                          </p>
+                        );
+                      })}
+                    </div>
+                  </div>
+                );
+              }
+              
+              return (
+                <p key={idx} className="text-sm leading-relaxed">
+                  {section}
+                </p>
+              );
+            })}
           </div>
         </Card>
       )}
