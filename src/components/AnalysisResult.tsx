@@ -35,7 +35,7 @@ const AnalysisResult = ({ analysis, image }: AnalysisResultProps) => {
     const extractSection = (sectionName: string): string[] => {
       const regex = new RegExp(`${sectionName}[:\\s]*([\\s\\S]*?)(?=\\n\\n|\\*\\*|$)`, 'i');
       const match = text.match(regex);
-      if (!match) return [];
+      if (!match || !match[1]) return [];
       
       return match[1]
         .split('\n')
