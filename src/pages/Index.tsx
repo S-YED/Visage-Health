@@ -198,6 +198,18 @@ const Index = () => {
           </div>
         </section>
       )}
+
+      {/* Footer */}
+      <footer className="px-4 py-12 border-t border-border">
+        <div className="max-w-7xl mx-auto text-center space-y-4">
+          <p className="text-sm text-muted-foreground">
+            Built by <span className="text-primary font-medium">Syed Khaja Moinuddin</span>
+          </p>
+          <p className="text-xs text-muted-foreground">
+            © 2024 Syed Khaja Moinuddin. All rights reserved.
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };

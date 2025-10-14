@@ -306,6 +306,13 @@ const AnalysisResult = ({ analysis, image }: AnalysisResultProps) => {
           professionals for medical concerns.
         </p>
       </div>
+
+      {/* Footer */}
+      <div className="text-center py-8 border-t border-border">
+        <p className="text-sm text-muted-foreground">
+          Built by <span className="text-primary font-medium">Syed Khaja Moinuddin</span>
+        </p>
+      </div>
     </div>
   );
 };
