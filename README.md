@@ -210,13 +210,37 @@ Displays comprehensive health analysis results with organized sections:
    - In Hostinger: Point domain to `public_html`
    - Update Supabase CORS settings to allow your domain
 
+### GitHub Pages Deployment
+
+1. **Push to GitHub**
+   ```bash
+   git add .
+   git commit -m "Deploy to GitHub Pages"
+   git push origin main
+   ```
+
+2. **Setup GitHub Secrets**
+   - Go to your GitHub repo → Settings → Secrets and variables → Actions
+   - Add these secrets:
+     - `VITE_SUPABASE_URL`
+     - `VITE_SUPABASE_PUBLISHABLE_KEY` 
+     - `VITE_SUPABASE_PROJECT_ID`
+
+3. **Enable GitHub Pages**
+   - Go to repo Settings → Pages
+   - Source: GitHub Actions
+   - The workflow will auto-deploy on push to main
+
+4. **Access Your Site**
+   - URL: `https://yourusername.github.io/upgrade-your-repo/`
+
 ### Alternative Deployment Options
 
 The application can also be deployed to other static hosting services:
 - Vercel
 - Netlify
 - AWS S3 + CloudFront
-- GitHub Pages
+- Hostinger
 
 ## 🔐 Security & Privacy
 
