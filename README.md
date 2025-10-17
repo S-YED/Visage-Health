@@ -232,7 +232,7 @@ Displays comprehensive health analysis results with organized sections:
    - The workflow will auto-deploy on push to main
 
 4. **Access Your Site**
-   - URL: `https://yourusername.github.io/upgrade-your-repo/`
+   - URL: `https://yourusername.github.io/Visage-Health/`
 
 ### Alternative Deployment Options
 
